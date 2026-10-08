@@ -30,7 +30,7 @@ class MatrixConfig:
 
     # List of prefixes to ignore for user MXIDs, to avoid
     # double-bridging messages from other bridges
-    bridge_ignore_user_prefixes: Optional[tuple[str]] = ()
+    bridge_ignore_user_prefixes: Optional[tuple[str, ...]] = ()
 
     # Prefix to use for aliases
     room_prefix: Optional[str] = "_mattermost_"
@@ -82,10 +82,10 @@ class MattermostBridgeConfig:
     thread_equivalent: Literal["thread", "reply"] = "thread"
 
     # List of users to ignore when bridging
-    ignore_users: tuple[str] = ()
+    ignore_users: tuple[str, ...] = ()
 
     # List of channels to disable this ignore list on
-    ignore_users_whitelist: tuple[str] = ()
+    ignore_users_whitelist: tuple[str, ...] = ()
 
 
 @dataclass_json
@@ -97,10 +97,10 @@ class MattermostConfig:
     bridge: MattermostBridgeConfig
 
     # Channel IDs to skip exporting
-    skip_channels: tuple[str] = ()
+    skip_channels: tuple[str, ...] = ()
 
     # List of channels to always thread, regardless of the above options
-    always_thread: Optional[tuple[str]] = ()
+    always_thread: Optional[tuple[str, ...]] = ()
 
     username: Optional[str] = None
     password: Optional[str] = None
