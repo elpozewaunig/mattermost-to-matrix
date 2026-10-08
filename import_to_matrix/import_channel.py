@@ -151,7 +151,7 @@ async def create_channel_from_json(channel):
     )
     
     # Send custom state event to more easily indicate what channel we are on
-    await EventMethods.send_state_event(api, room_id, 'edu.mit.sipb.mattermost', {
+    await EventMethods.send_state_event(api, room_id, config.matrix.homeserver, {
         'channel_id': channel['id'],
     })
 

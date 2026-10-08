@@ -21,7 +21,7 @@ async def matrix_to_mattermost_channel(mm_api: MMApi, matrix_api: IntentAPI, roo
     """
     # Try using a custom state event first
     try:
-        custom_state = await matrix_api.get_state_event(room_id, 'edu.mit.sipb.mattermost')
+        custom_state = await matrix_api.get_state_event(room_id, config.matrix.homeserver)
         return custom_state['channel_id']
     except mautrix.errors.MNotFound:
         # Otherwise, get it from the alias
